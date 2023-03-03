@@ -86,6 +86,7 @@ public class QuotationService {
                 cost += quote.getQuotations().get("instant_noodle") * items.get(i).quantity;
             }
 
+
         }
 
         return cost;
