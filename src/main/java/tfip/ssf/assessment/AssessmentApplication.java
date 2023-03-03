@@ -8,11 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import tfip.ssf.assessment.Model.Quotation;
 import tfip.ssf.assessment.Service.QuotationService;
 
 @SpringBootApplication
 public class AssessmentApplication {
-	//public class AssessmentApplication implements CommandLineRunner{
+// public class AssessmentApplication implements CommandLineRunner{
 
 	@Autowired
 	QuotationService qsvc;
@@ -24,11 +25,12 @@ public class AssessmentApplication {
 	// @Override
 	// public void run(String... args) throws Exception {
 	// 	List<String> items = new LinkedList<>();
-	// 	items.add("apple");
-	// 	items.add("orange");
-	// 	items.add("banana");
+	//  	items.add("apple");
+	//  	items.add("orange");
+	//  	items.add("banana");
 
-	// 	qsvc.getQuotations(items);
+	// Quotation q = qsvc.getQuotations(items);
+	// System.out.println(q);
 	// }
 
 }

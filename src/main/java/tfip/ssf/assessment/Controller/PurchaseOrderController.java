@@ -1,6 +1,10 @@
 package tfip.ssf.assessment.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +18,7 @@ import jakarta.validation.Valid;
 import tfip.ssf.assessment.Model.Cart;
 import tfip.ssf.assessment.Model.DeliveryInfo;
 import tfip.ssf.assessment.Model.Item;
+import tfip.ssf.assessment.Model.Quotation;
 import tfip.ssf.assessment.Service.QuotationService;
 
 @Controller
@@ -81,9 +86,32 @@ public class PurchaseOrderController {
             return "view2";
         }
 
-        model.addAttribute("customer", info);
+        Cart cart = (Cart) session.getAttribute("cart");
+        System.out.println(cart.getItems().toString());
 
-        return "boo";
+        Quotation quote = new Quotation();
+
+        Map<String,Float> unitCost = new HashMap<>();
+        unitCost.put("apple", (float) 0.5);
+        unitCost.put("orange", (float) 0.6);
+        unitCost.put("bread", (float) 1);
+        unitCost.put("chicken", (float) 1.5);
+        unitCost.put("mineral_water", (float) 0.3);
+        unitCost.put("instant_noodle", (float) 1.2);
+
+        String randomId = UUID.randomUUID().toString().substring(0,8);
+
+        quote.setQuoteId(randomId);
+        quote.setQuotations(unitCost);
+
+        Float totalCost = qSvc.calculateCost(cart.getItems(), quote);
+
+        model.addAttribute("invoiceId", randomId);
+        model.addAttribute("name", info.getName());
+        model.addAttribute("address", info.getAddress());
+        model.addAttribute("total", totalCost);
+
+        return "view3";
     }
 
 
