@@ -1,3 +1,4 @@
+package tfip.ssf.assessment.Model;
 // TODO: Add your package here
 
 // DO NOT MODIFY THIS FILE

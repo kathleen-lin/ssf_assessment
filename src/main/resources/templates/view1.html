@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>View 1</title>
+	</head>
+	<body>
+		<!--
+			Feel free to make changes to this HTML but do no change the option in select
+		-->
+
+		<h1>Shopping Cart</h1>
+        <form action="/add" method="POST" data-th-object="${item}">
+		<table>
+			<tr>
+				<td>Item:</td>
+				<td>
+					<select name="item" data-th-field="*{name}">
+						<option value="apple">Apple</option>
+						<option value="orange">Orange</option>
+						<option value="bread">Bread</option>
+						<option value="cheese">Cheese</option>
+						<option value="chicken">Chicken</option>
+						<option value="mineral_water">Mineral Water</option>
+						<option value="instant_noodles">Instant Noodles</option>
+					</select>
+                    <p data-th-if="${#fields.hasErrors('global')}" data-th-errors="*{global}"></p>
+
+				</td>
+			</tr>
+			<tr>
+				<td>Quantity:</td>
+				<td>
+					<input type="number" name="quantity" size="4" placeholder="Quantity" data-th-field="*{quantity}">
+                    <p data-th-if="${#fields.hasErrors('quantity')}" data-th-errors="*{quantity}"></p>
+                </td>
+			</tr>
+		</table>
+
+        <table data-th-if="${#lists.isEmpty(shoppingcart)}">
+            <p>Your cart is currently empty</p>
+        </table>
+     
+		<table border="1" style="margin-top: 2vh; margin-bottom: 2vh;" data-th-unless="${#lists.isEmpty(shoppingcart)}">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody data-th-each="i: ${shoppingcart}">
+
+				<tr>
+					<td data-th-text="${i.name}"></td>
+					<td data-th-text="${i.quantity}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div>
+			<button type="submit">Add</button>
+            <button type="submit" formmethod ="GET" formaction="/shippingaddress">Next</button>
+			
+		</div>
+    </form>
+    
+		
+	</body>
+</html>
