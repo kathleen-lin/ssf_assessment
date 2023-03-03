@@ -8,15 +8,20 @@
 </head>
 <body>
     <h1>Shipping Address</h1>
-    <form action="">
-        <label for="">Name: </label>
-        <input type="text" >
+    <form action="/orderReceived" method="POST" data-th-object="${info}">
+        <label for="name">Name: </label>
+        <input name="name" type="text" data-th-field="*{name}" >
+        <p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></p>
+
         <br>
-        <label for="">Address: </label>
-        <input type="text" >
+        <label for="address">Address: </label>
+        <input name="address" type="text" data-th-field="*{address}">
+        <p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></p>
+
         <br>
         <button>Back</button>
-        <button>Checkout</button>
+        
+        <button type="submit">Checkout</button>
     </form>
 </body>
 </html>

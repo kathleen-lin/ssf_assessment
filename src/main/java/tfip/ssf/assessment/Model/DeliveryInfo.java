@@ -1,5 +1,6 @@
 package tfip.ssf.assessment.Model;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -9,8 +10,12 @@ public class DeliveryInfo {
     @Size(min=2, message="Name must be at least 2 character long")
     private String name;
 
-    @NotNull (message="Please provide an address")
+    @NotEmpty (message="Please provide an address")
     private String address;
+
+    public DeliveryInfo(){
+
+    }
 
     public String getName() {
         return name;

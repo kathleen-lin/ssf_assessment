@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import tfip.ssf.assessment.Model.Cart;
+import tfip.ssf.assessment.Model.DeliveryInfo;
 import tfip.ssf.assessment.Model.Item;
 import tfip.ssf.assessment.Service.QuotationService;
 
@@ -60,14 +61,29 @@ public class PurchaseOrderController {
         return "view1";
     }
 
+
     @GetMapping("/shippingaddress")
     public String showShippingForm(Model model, HttpSession session){
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart.getItems().isEmpty()){
             return "redirect:/";
         }
+
+        model.addAttribute("info", new DeliveryInfo());
+
         return "view2";
 
+    }
+
+    @PostMapping("/orderReceived")
+    public String postShippingForm(@Valid DeliveryInfo info, BindingResult result, Model model, HttpSession session){
+        if(result.hasErrors()){
+            return "view2";
+        }
+
+        model.addAttribute("customer", info);
+
+        return "boo";
     }
 
 
