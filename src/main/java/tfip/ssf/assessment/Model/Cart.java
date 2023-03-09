@@ -17,7 +17,30 @@ public class Cart {
 
     public void updateCart(Item i){
 
-        items.add(i);
+        String name = i.getName();
+        // System.out.println("item to add is " + name);
+        Boolean isDuplicate = false;
+        Integer index = null;
+        for (int j = 0; j < items.size(); j++){
+            // System.out.println("exisitng items " + items.get(j).getName());
+            if (items.get(j).getName().equals(name)){
+                System.out.println("found duplicate");
+                isDuplicate = true;
+                index = j;
+                break;
+            }
+        }
+
+        if (isDuplicate){
+            // System.out.println("there is a duplicate");
+            Item curr = items.get(index);
+            int newQuantity = curr.getQuantity() + i.getQuantity();
+            curr.setQuantity(newQuantity);
+        } else {
+            // System.out.println("this is new item");
+
+            items.add(i);
+        }
 
     }
 

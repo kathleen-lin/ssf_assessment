@@ -11,12 +11,12 @@
     <form action="/orderReceived" method="POST" data-th-object="${info}">
         <label for="name">Name: </label>
         <input name="name" type="text" data-th-field="*{name}" >
-        <p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></p>
+        <!--<p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"></p>-->
 
         <br>
         <label for="address">Address: </label>
         <input name="address" type="text" data-th-field="*{address}">
-        <p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></p>
+        <!--<p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"></p>-->
 
         <br>
         <button>Back</button>
@@ -25,3 +25,4 @@
     </form>
 </body>
 </html>
+

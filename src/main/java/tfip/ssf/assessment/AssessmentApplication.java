@@ -21,16 +21,16 @@ public class AssessmentApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AssessmentApplication.class, args);
 	}
+/* 
+	 @Override
+	  public void run(String... args) throws Exception {
+	  	List<String> items = new LinkedList<>();
+	   	items.add("apple");
+	  	items.add("orange");
+	   	items.add("mineral_water");
 
-	// @Override
-	// public void run(String... args) throws Exception {
-	// 	List<String> items = new LinkedList<>();
-	//  	items.add("apple");
-	//  	items.add("orange");
-	//  	items.add("banana");
-
-	// Quotation q = qsvc.getQuotations(items);
-	// System.out.println(q);
-	// }
-
+	  Quotation q = qsvc.getQuotations(items);
+	  System.out.println(q);
+	  }
+*/
 }
